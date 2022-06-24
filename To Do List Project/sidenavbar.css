@@ -1,0 +1,127 @@
+:root {
+    
+    --first-color: hsl(228, 81%, 49%);
+    --title-color: hsl(228, 12%, 15%);
+    --text-color: hsl(0, 0%, 5%);
+    --container-color: #fff;
+    --body-font: 'Poppins', sans-serif;
+    --normal-font-size: .938rem;
+    
+  }
+
+    /* Responsive  */
+    @media screen and (min-width: 968px) {
+        :root {
+          --normal-font-size: 1rem;
+        }
+      }
+  
+      a {
+        text-decoration: none;
+      }
+      @media screen and (max-width: 767px) {
+        .nav__logo, 
+        .nav__toggle, 
+        .nav__name {
+          display: none;
+        }
+        .nav__list {
+          position: fixed;
+          float: left;
+          background-color: var(--container-color);
+          left: 0;
+          right: 0;
+          margin: 0 auto;
+          display: flex;
+          justify-content: left;
+          align-items: left;
+          transition: .4s;
+        }
+      }
+
+      .nav__link {
+        display: flex;
+        color: var(--text-color);
+        font-weight: 500;
+        transition: .3s;
+        padding-top: 7px;
+        padding-bottom: 7px;
+        padding-left: 7px;
+      }
+
+      .nav__link i {
+        font-size: 1.25rem;
+      }
+
+      .nav__link:hover {
+        color: var(--first-color);
+      }
+
+      .active-link {
+        color: var(--first-color);
+        background-color: #eff6ff;
+        border-radius: 10px;
+      }
+
+      .box1 {
+        border-bottom: 2px solid #d1d1d1;
+      }
+
+      @media screen and (max-width: 320px) {
+        .nav__list {
+          column-gap: 20px;
+        }
+      }
+
+      @media screen and (min-width: 576px) {
+        .nav__list {
+          width: 332px;
+        }
+      }
+      @media screen and (min-width: 767px) {
+        
+        .item2 {
+          background-color: var(--container-color);
+          transition: .3s;
+          
+        }
+        
+        .nav__logo {
+          display: flex;
+        }
+        .nav__logo i {
+          font-size: 1.25rem;
+          color: var(--first-color);
+        }
+        .nav__logo-name {
+          color: var(--title-color);
+          font-weight: 600;
+        }
+        .nav__logo, .nav__link {
+          align-items: left;
+          column-gap: 1rem;
+          margin: 20px;
+         
+        }
+        .nav__list {
+          display: grid;
+          row-gap: 1.5rem;
+          margin-top: 0.5rem;
+        }
+        
+        .nav__content {
+          overflow: visible;
+          height: 100%;
+        }
+        @media screen and (min-width: 2048px) {
+            body {
+              zoom: 1.7;
+            }
+          }
+          @media screen and (min-width: 3840px) {
+            body {
+              zoom: 2.5;
+            }
+          }
+      }
+

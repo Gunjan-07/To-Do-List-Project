@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <link rel="stylesheet" href="new.css">
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="topnav.css">
+    <link rel="stylesheet" href="sidenavbar.css">
+    <link rel="stylesheet" href="item3.css">
+
+</head>
+<body>
+    <div class="container">
+        <div class="item item1">
+            <div class="topnav">
+                <a href="#">TASKS</a>
+            <input type="text" placeholder="Search..">
+            <button type="sumbit"><i class='bx bx-search-alt-2' ></i></button>
+            <div class="newT">
+                <button type="sumbit" class="newTask" id="newTask"><i class='bx bx-plus'> New Task</i></button>
+            </div>
+            </div>
+        </div>
+        <div class="item item2" >
+            <nav class="nav__content">
+                <div class="nav__list">
+                    <div class="box1">
+                        <a href="Today.html" class="nav__link today">
+                            <i class='bx bx-grid-alt'></i>
+                            <span class="nav__name">Today</span>
+                        </a>
+                        <a href="tomorrow.html" class="nav__link active-link tomorrow">
+                            <i class='bx bx-file'></i>
+                            <span class="nav__name">Tomorrow</span>
+                        </a>
+                        <a href="overdue.html" class="nav__link overdue">
+                            <i class='bx bx-time-five' ></i>
+                            <span class="nav__name">Overdue</span>
+                        </a>
+                    </div>
+                    <div class="box2">
+                        <a href="personal.html" class="nav__link personal">
+                            <i class='bx bx-bar-chart-square' ></i>
+                            <span class="nav__name">Personal</span>
+                        </a>
+                        <a href="home.html" class="nav__link home">
+                            <i class='bx bx-home' ></i>
+                            <span class="nav__name">Home</span>
+                        </a>
+                        <a href="office.html" class="nav__link office">
+                            <i class='bx bxs-business' ></i>
+                            <span class="nav__name">Office</span>
+                        </a>
+                        <a href="travel.html" class="nav__link travel">
+                            <i class='bx bxs-train' ></i>
+                            <span class="nav__name">Travel</span>
+                        </a>
+                        <a href="other.html" class="nav__link other">
+                            <i class='bx bx-task' ></i>
+                            <span class="nav__name">Other</span>
+                        </a>
+                    </div>  
+                </div>
+            </nav>
+        </div>
+        <div class="item item3" style="height: 100%; overflow-y: auto;">
+            <div class="ntags">
+                <div id="today">
+                    <div class="heading">
+                        <h1><i class='bx bx-file'></i> Tomorrow</h1>    
+                    </div>
+                    <input type="text" placeholder="+ Add Task" id="+task">
+                    <br><br><br>
+                    <div>
+                        <table id="table">
+                            <thead>
+                                <tr>
+                                    <th>Done/Not</th>
+                                    <th>Task Description</th>
+                                    <th>Last Date</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableBody">
+                                <tr>
+                                    <td id="checkBoxTable"></td>
+                                    <td></td> 
+                                    <td></td>
+                                    <td><button></button></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <div class="task-btn">
+        <div class="task">
+            <form action="">
+                <h2>Add Task</h2>
+                <label for="to Accomplish">What are you upto?</label>
+                <input id="label-input" type="text" name="label-input" placeholder="Breif text for what you want to accomplish" required>
+                <br>
+                <label for="date">When do you want to complete it?</label>
+                <input id="date" type="date" name="Date" placeholder="Date in DD/MM/YY" required>
+                <div class="btn-group">
+                    <h3>Tags</h3>
+                    <div class="tag-btn-grp-today" id="myCheck">
+                        <div class="tag-btn" id="personal-btn"> Personal</div>
+                        <div class="vr"></div>
+                        <div class="tag-btn" id="home-btn"> Home</div>
+                        <div class="vr"></div>
+                        <div class="tag-btn" id="office-btn"> Office</div>
+                        <div class="vr"></div>
+                        <div class="tag-btn" id="travel-btn"> Travel</div>
+                        <div class="vr"></div>
+                        <div class="tag-btn" id="other-btn"> Other</div>
+                    </div>
+                    
+                </div>
+                <br><br>
+                <div class="btn-grp">
+                    <button class="b1">Cancel</button>
+                    <button id="add-button" class="b2">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="sidenavbar.js"></script>
+    <script src="popup.js"></script>
+    <script>
+
+        let per = "null"
+        let tags = []
+        personal = document.getElementById('personal-btn');
+        personal.addEventListener("click", ()=>{
+            personal.classList.toggle("tag-btn-active")
+            per = "personal"
+            if (tags.includes("personal")) {
+                tags = tags.filter(tag => tag !== "personal")
+            } else {
+                tags.push("personal")
+            }
+        })
+
+        let hom = "null"
+        home = document.getElementById('home-btn');
+        home.addEventListener("click", ()=>{
+            home.classList.toggle("tag-btn-active")
+            hom = "home"
+            if (tags.includes("home")) {
+                tags = tags.filter(tag => tag !== "home")
+            } else {
+                tags.push("home")
+            }
+        })
+
+        let tra = "null"
+        travel = document.getElementById('travel-btn');
+        travel.addEventListener("click", ()=>{
+            travel.classList.toggle("tag-btn-active")
+            tra = "travel"
+            if (tags.includes("travel")) {
+                tags = tags.filter(tag => tag !== "travel")
+            } else {
+                tags.push("travel")
+            }
+        })
+
+        let off = "null"
+        office = document.getElementById('office-btn');
+        office.addEventListener("click", ()=> {
+            office.classList.toggle("tag-btn-active")
+            off = "office"
+            if (tags.includes("office")) {
+                tags = tags.filter(tag => tag !== "office")
+            } else {
+                tags.push("office")
+            }
+        })
+
+        let oth = "null"
+        other = document.getElementById('other-btn');
+        other.addEventListener("click", ()=> {
+            other.classList.toggle("tag-btn-active")
+            oth = "other"
+            if (tags.includes("other")) {
+                tags = tags.filter(tag => tag !== "other")
+            } else {
+                tags.push("other")
+            }
+        })
+
+        function getAndUpdate() {
+            tit = document.getElementById('label-input').value;
+            date = document.getElementById('date').value;
+            if (tit !== "" && date !== "" && tags.length > 0) {
+                if (localStorage.getItem('itemsJson') == null) {
+                    itemJsonArray = [];
+                    itemJsonArray.push([tit, date]);
+                    localStorage.setItem('itemsJson', JSON.stringify(itemJsonArray))
+                }
+                else {
+                    itemJsonArrayStr = localStorage.getItem('itemsJson')
+                    itemJsonArray = JSON.parse(itemJsonArrayStr);
+                    itemJsonArray.push([tit, date, per, hom, tra, off, oth]);
+                    localStorage.setItem('itemsJson', JSON.stringify(itemJsonArray))
+                    per = "null"
+                }
+                update();
+            }
+        }
+
+        function update() {
+            if (localStorage.getItem('itemsJson') == null) {
+                itemJsonArray = [];
+                localStorage.setItem('itemsJson', JSON.stringify(itemJsonArray))
+            }
+            else {
+                itemJsonArrayStr = localStorage.getItem('itemsJson')
+                itemJsonArray = JSON.parse(itemJsonArrayStr);
+            }
+            let tableBody = document.getElementById("tableBody");
+            let str = "";
+            itemJsonArray.forEach((element, index) => {
+                const day = new Date();
+                if (day.getDate().toString() === element[1].slice(8, 10)) {
+                    str += `
+                        <tr>
+                        <td><input type="checkbox" ></td>
+                        <td>${element[0]}</td>
+                        <td>${element[1]}</td> 
+                        <td><button onclick="deleted(${index})"><i class='bx bxs-trash-alt'></button></td> 
+                        </tr>`;
+                }
+                else {
+
+                }
+            });
+            tableBody.innerHTML = str;
+        }
+
+        add = document.getElementById("add-button");
+        add.addEventListener("click", () => {
+            getAndUpdate();
+        });
+        update();
+
+        function deleted(itemIndex) {
+            console.log("Delete", itemIndex);
+            itemJsonArrayStr = localStorage.getItem('itemsJson')
+            itemJsonArray = JSON.parse(itemJsonArrayStr);
+            // Delete itemIndex element from the array
+            itemJsonArray.splice(itemIndex, 1);
+            localStorage.setItem('itemsJson', JSON.stringify(itemJsonArray));
+            update();
+        }
+
+
+    </script>
+</body>
+</html>
